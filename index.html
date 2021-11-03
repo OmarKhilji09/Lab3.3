@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS style sheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Omar Khilji</title>
+  </head>
+  <body>
+    <!-- Div container with word p tags for word count and instructions. Put them in a container so I can center them with CSS grid -->
+    <div class="container">
+      <!-- p tag with a in-line span tag to diplay word count -->
+      <!-- had a span tag so I can target the number with id -->
+      <p>Word Count: <span class="counter" id="counter">0</span></p>
+
+      <p class="para">Enter text below and see the word count change!</p>
+
+      <!-- text are tag with id for user input -->
+      <textarea id="input" rows="10"></textarea>
+    </div>
+
+    <script>
+      // got the id of the tags necessary and put them into variables to work with them
+      var input = document.getElementById("input");
+      var counter = document.getElementById("counter");
+
+      /* word counter function that takes the input value. Initialzed count to 0 and used for loop to go through
+      the array and add to the word count each time a space is deducted. The word count is then added to the span tag as we had its id
+      */
+      const wordCounter = (string) => {
+        var string = input.value;
+        var words = 0;
+        for (var i = 1; i < string.length; i++) {
+          if (string.charAt(i) == " ") {
+            words++;
+          }
+        }
+        counter.innerText = words;
+      };
+
+      // event listner that runs the wordcounter after every keyup
+      input.addEventListener("keyup", function (event) {
+        wordCounter(event.target.value);
+      });
+    </script>
+  </body>
+</html>
